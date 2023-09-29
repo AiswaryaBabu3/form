@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link rel="stylesheet" href="./form1js.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1>Register form</h1>
+
+            <div class="input-group">
+                <div class="input-field" >
+                    <input type="text" placeholder="Name" id="name" >
+                </div>
+                <span id="error" style="color: red;"></span>
+                <div class="input-field">
+                    <input type="email" placeholder="Email" id="email">
+                </div>
+                <span id="e1" style="color: red;"></span>
+
+                <div class="input-field">
+                    <input type="password" placeholder="Password" id="password">
+                </div>
+                <span id="e2" style="color: red;"></span>
+                <div class="input-field">
+                    <input type="password" placeholder="Repeat Password" id="password2">
+                </div>
+                <span id="e7" style="color: red;"></span>
+                <p>forgot password<a href="#">Click here to reset!</a></p>
+                <div class="input-field">
+                    <input type="phoneno" placeholder="phone number" id="phoneno">
+                </div>
+                <span id="e3" style="color: red;"></span>
+                <div class="input-field">
+                    <input type="text" placeholder="date" id="date">
+                </div>
+                <span id="e4" style="color: red;"></span>
+        
+                <div class="input-field">
+                    <input type="text" placeholder="gender">
+                    male<input type="radio" id="male" name="gender" value="1"> female<input type="radio" value="2" id="female" name="gender">
+                </div>
+                <span id="e5" style="color: red;"></span>
+                <div class="input-field">
+                    <input type="text" placeholder="district">
+                    <select style="width: 1000%;height: 1000%; background-color: grey;" id="district">
+                        <option>-select-</option>
+                        <option>coimbatore</option>
+                        <option>dindugul</option>
+                        <option>madurai</option>
+                        <option>chennai</option>
+                    </select>
+                </div>
+                <span id="e6" style="color: red;"></span>
+
+            </div>
+                <button value="submit" onclick="datavalid()" id="button">Submit</button>
+            
+        </div>
+    </div>
+    <script>
+        function datavalid(){
+let name=document.getElementById('name').value 
+let p=/^[a-zA-Z]+$/
+
+if(name==""){
+    document.getElementById('error').innerHTML="enter name"
+}else if(!p.test(name)){
+    document.getElementById('error').innerHTML="enter valid name"
+}
+
+else{
+    document.getElementById('error').innerHTML=""
+}
+let email=document.getElementById('email').value
+let e=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+if(email==""){
+    document.getElementById('e1').innerHTML="enter email"
+} else if(!e.test(email)){
+        document.getElementById('e1').innerHTML="enter valid email"
+    }
+else {
+    document.getElementById('e1').innerHTML=""
+}
+let password=document.getElementById('password').value
+let a=/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+if (password==""){
+    document.getElementById('e2').innerHTML="enter password"
+} else if(!a.test(password)){
+    document.getElementById("e2").innerHTML="enter the strong password"
+}else{
+    document.getElementById("e2").innerHTML=""
+}
+let phoneno=document.getElementById('phoneno').value
+let n=/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/
+
+if(phoneno==""){
+    document.getElementById('e3').innerHTML="enter mobile number"
+}
+else if(!n.test(phoneno)){
+    document.getElementById('e3').innerHTML="enter valid phone number"
+}
+else{
+    document.getElementById("e3").innerHTML=""
+}
+let date=document.getElementById("date").value
+let d=/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/
+if (date==""){
+    document.getElementById("e4").innerHTML="enter date"
+}
+else if(!d.test(date)){
+    document.getElementById("e4").innerHTML="enter valid date"
+}
+else {
+    document.getElementById("e4").innerHTML=""
+}
+let male=document.getElementById("male").value
+let female=document.getElementById("female").value
+if (!male.checked && !female.checked){
+    document.getElementById('e5').innerHTML="enter gender"
+}
+else
+{ document.getElementById('e5').innerHTML=""
+        }
+        let district=document.getElementById("district").value
+        if(district=="-select-"){
+            document.getElementById('e6').innerHTML="select district"
+        }
+        else{
+            document.getElementById("e6").innerHTML=""
+        }
+        let rp=document.getElementById("password2").value
+        if(rp!=password){
+            document.getElementById('e7').innerHTML="password doesn't match"
+        }
+        else{
+            document.getElementById("e7").innerHTML=""
+        }
+    }
+    </script>
+</body>
+</html>
